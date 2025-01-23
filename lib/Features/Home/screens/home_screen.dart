@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';
 import 'package:iconly/iconly.dart';
 import 'package:taskone/Common/Utils/color.dart';
@@ -8,17 +7,15 @@ import 'package:taskone/Common/Utils/stroll_icon_icons.dart';
 import 'package:taskone/Common/Widgets/text.dart';
 import 'package:taskone/Features/Home/widgets/profile_card.dart';
 
-class HomeScreen extends ConsumerStatefulWidget {
+class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
   @override
-  ConsumerState<HomeScreen> createState() => _HomeScreenState();
-}
-
-class _HomeScreenState extends ConsumerState<HomeScreen> {
-  @override
   Widget build(BuildContext context) {
     Sizes().init(context);
+
+    double imageContainerHeight =
+        MediaQuery.of(context).size.height < 1000 ? 275 : 400;
 
     return Scaffold(
       backgroundColor: Colors.black,
@@ -39,8 +36,9 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              //! in an ideal dev, this image will come with the background Image.
               Container(
-                height: 400,
+                height: imageContainerHeight,
                 decoration: BoxDecoration(
                   boxShadow: [
                     BoxShadow(
